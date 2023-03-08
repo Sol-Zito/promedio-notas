@@ -2,6 +2,8 @@ import React from "react";
 import "./styles.css";
 
 const Table = ({ dataFilter }) => {
+
+
   return (
     <table border="1" className="line_title">
       <thead>

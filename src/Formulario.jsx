@@ -1,9 +1,11 @@
 import React from "react";
+import Table from "./Table";
 
 const Formulario = ({ data, handleClick }) => {
   const dataFilter = data;
 
   const validDisciplina = (dis) => dataFilter.some((de) => de.name === dis);
+
   const validNota = (nota) => {
     if (nota >= 0 && nota < 11) {
       return true;
@@ -14,20 +16,21 @@ const Formulario = ({ data, handleClick }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const disciplina = event.target.disciplina.value;
     const nota = event.target.calificacion.value;
+
     const isValidNota = validNota(nota);
     const isValidDisciplina = validDisciplina(disciplina);
+
     if (isValidNota && isValidDisciplina) {
       alert(`su nota en ${disciplina} es de: ${nota}`);
       handleClick(disciplina, nota);
-      
     } else if (isValidNota && !isValidDisciplina) {
       alert(`el curso seleccionado no es válido`);
     } else {
       alert("algun dato no es correcto");
     }
-
   }
 
   return (
@@ -53,6 +56,9 @@ const Formulario = ({ data, handleClick }) => {
         </div>
         <button type="submit">Enviar</button>
       </form>
+      <div className="container">
+        <Table dataFilter={dataFilter} />
+      </div>
     </>
   );
 };
