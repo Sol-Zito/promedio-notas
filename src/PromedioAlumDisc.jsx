@@ -34,38 +34,34 @@ function PromedioAlumDisc() {
     },
   ]);
 
-  let dataFilter = data.filter((e) => e.name !== "Devops");
+  let dataFilter = data.filter((elemento) => elemento.name !== "Devops");
 
-  const promedioNotas = (cantAlu, arrNotas) => {
+  const promedioNotas = (cantAlumnos, arrNotas) => {
     let resultado = 0;
     if (arrNotas.length > 1) {
-      console.log("arrNotas", arrNotas);
       let total = arrNotas.reduce((a, b) => a + b);
-      console.log(total);
-      resultado = total / cantAlu;
+      resultado = total / cantAlumnos;
     } else {
       resultado = arrNotas[0];
     }
-    console.log("resultado del promedio", resultado);
     return resultado;
   };
 
-  const handleClick = (disciplina, nota) => {
+  const changeData = (disciplina, nota) => {
     let newNota = parseFloat(nota);
-    const nuevoArr = data.map((el) => {
-      if (el.name === disciplina) {
-        console.log("elemento", el);
+    const nuevoArr = data.map((objeto) => {
+      if (objeto.name === disciplina) {
         return {
-          ...el,
-          cantAlumnos: el.cantAlumnos + 1,
+          ...objeto,
+          cantAlumnos: objeto.cantAlumnos + 1,
           promedioDeNotas: promedioNotas(
-            el.cantAlumnos + 1,
-            el.cantNotas.concat(newNota)
+            objeto.cantAlumnos + 1,
+            objeto.cantNotas.concat(newNota)
           ),
-          cantNotas: el.cantNotas.concat(newNota),
+          cantNotas: objeto.cantNotas.concat(newNota),
         };
       } else {
-        return el;
+        return objeto;
       }
     });
     setData([...nuevoArr]);
@@ -73,7 +69,7 @@ function PromedioAlumDisc() {
 
   return (
     <div className="container">
-      <Formulario data={dataFilter} handleClick={handleClick} />
+      <Formulario data={dataFilter} changeData={changeData} />
     </div>
   );
 }

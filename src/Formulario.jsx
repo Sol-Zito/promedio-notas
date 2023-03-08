@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "./Table";
 
-const Formulario = ({ data, handleClick }) => {
+const Formulario = ({ data, changeData }) => {
   const dataFilter = data;
 
   const validDisciplina = (dis) => dataFilter.some((de) => de.name === dis);
@@ -25,7 +25,7 @@ const Formulario = ({ data, handleClick }) => {
 
     if (isValidNota && isValidDisciplina) {
       alert(`su nota en ${disciplina} es de: ${nota}`);
-      handleClick(disciplina, nota);
+      changeData(disciplina, nota);
     } else if (isValidNota && !isValidDisciplina) {
       alert(`el curso seleccionado no es válido`);
     } else {

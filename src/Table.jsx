@@ -14,12 +14,12 @@ const Table = ({ dataFilter }) => {
         </tr>
       </thead>
       <tbody>
-        {dataFilter.map((element) => {
+        {dataFilter.map((disciplina) => {
           return (
-            <tr key={element.id}>
-              <td> {element.name}</td>
-              <td>{element.cantAlumnos}</td>
-              <td>{element.promedioDeNotas}</td>
+            <tr key={disciplina.id}>
+              <td> {disciplina.name}</td>
+              <td>{disciplina.cantAlumnos}</td>
+              <td>{disciplina.promedioDeNotas}</td>
             </tr>
           );
         })}
