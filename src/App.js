@@ -1,10 +1,10 @@
 import "./App.css";
-import PromedioAlumDisc from "./proyecto/PromedioAlumDisc";
+import PromedioAlumDisc from "./PromedioAlumDisc";
 
 function App() {
   return (
     <div className="App">
-      <PromedioAlumDisc />
+      <PromedioAlumDisc/>
     </div>
   );
 }
